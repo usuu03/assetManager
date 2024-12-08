@@ -37,7 +37,7 @@ export default function Header() {
             to="/devices"
             className="text-white hover:underline flex item-center font-semibold"
           >
-            <MdDevices />
+            <MdDevices className="hover:underline" />
           </NavLink>
           <NavLink
             to="/software"
