@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { login } from "../api/api";
 
 export default function LoginPage() {
+  const [errors, setErrors] = useState({});
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setErrors({}); //Resetting errors
+    try {
+      const response = await login(username, password);
+      console.log("Login successful", response);
+
+      // navigate("/dashboard")
+    } catch (error) {
+      console.error("Login failed:", error);
+      setErrors({
+        password: error.message || "Invalid Credentials, Please try again.",
+      });
+    }
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-300">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
@@ -14,11 +37,14 @@ export default function LoginPage() {
             Sign Up
           </Link>
         </p>
-        <form action="" className="space-y-4">
+        <form action="" className="space-y-4" onSubmit={handleLogin}>
           <div>
             <input
               type="text"
-              placeholder="Email Address"
+              placeholder="Username"
+              value={username}
+              name="username"
+              onChange={(e) => setUsername(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -26,6 +52,9 @@ export default function LoginPage() {
             <input
               type="password"
               placeholder="Password"
+              value={password}
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <div>
@@ -35,6 +64,12 @@ export default function LoginPage() {
             </div>
           </div>
         </form>
+        {/* Display error message*/}
+        {errors.password && (
+          <div className="mt-4 text-red-500 text-center bg-rose-200 rounded-md w-full py-3">
+            <p>{errors.password}</p>
+          </div>
+        )}
       </div>
     </div>
   );
