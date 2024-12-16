@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,6 +78,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "asset_manager_backend.wsgi.application"
+
+
+MEDIA_URL = '/organization_logos/'  # URL path for serving media files
+MEDIA_ROOT = BASE_DIR / 'organization_logos'  # Directory to store uploaded files
 
 
 # Database
