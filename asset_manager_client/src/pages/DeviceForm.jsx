@@ -126,7 +126,7 @@ export default function DeviceForm() {
               onChange={handleChange}
               className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option value="">Select an Industry</option>
+              <option value="">Select the Device's Current Status</option>
 
               <option value={formData.status}>Active</option>
               <option value={formData.status}>Maintenance</option>
