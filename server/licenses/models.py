@@ -4,7 +4,6 @@ from organization.models import Organization
 # Create your models here.
 class License(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False)
-    lincense_type = models.CharField(max_length=255, null=False, blank=False)
     purchase_date = models.DateField()
     vendor = models.CharField(max_length=255, null=True, blank=True)
     provider = models.CharField(max_length=255, null=True, blank=True)
