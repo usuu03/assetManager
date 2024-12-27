@@ -56,7 +56,7 @@ export default function LicenseForm() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-200 pb-80">
+    <div className="flex justify-center items-center min-h-screen bg-gray-200">
       <div className="bg-white p-12 border shadow-lg w-full max-w-lg">
         <h2 className="text-2xl font-bold text-center mb-4">
           Add a New Software Subscription

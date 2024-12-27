@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 import { login } from "../api/api";
+
+import { AuthContext } from "../context/AuthContext";
 
 export default function LoginPage() {
   const [errors, setErrors] = useState({});
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const { handleLogin } = useContext(AuthContext);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({}); //Resetting errors
     try {
       const response = await login(username, password);
+      console.log("API Response:", response.data);
+      handleLogin(response.data);
       console.log("Login successful", response);
 
       // navigate("/dashboard")
@@ -37,7 +42,7 @@ export default function LoginPage() {
             Sign Up
           </Link>
         </p>
-        <form action="" className="space-y-4" onSubmit={handleLogin}>
+        <form action="" className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
