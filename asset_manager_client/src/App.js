@@ -43,6 +43,7 @@ function App() {
               <Route path="/organization" element={<OrganizationSignUp />} />
               <Route path="/add-device" element={<DeviceForm />} />
               <Route path="/add-license" element={<LicenseForm />} />
+              <Route path="/test" element={<Dashboard />} />
               <Route
                 path="/dashboard"
                 element={

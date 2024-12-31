@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Icon } from "@blueprintjs/core";
+import { Link } from "react-router-dom";
 
 export default function Sidebar({ collapsed, toggleSidebar }) {
   return (
@@ -25,11 +26,18 @@ export default function Sidebar({ collapsed, toggleSidebar }) {
       {/* Navbar Links Section */}
       <ul className="flex-grow space-y-3 px-4 py-2">
         <li className="flex items-center space-x-3 cursor-pointer hover:bg-green-600 p-2 rounded-md text-white">
-          <Icon icon="home" color="white" /> {!collapsed && <span>Home</span>}
+          <Link
+            to="/dashboard"
+            className="flex items-center space-x-2 no-underline text-white w-full"
+          >
+            <Icon icon="home" color="white" /> {!collapsed && <span>Home</span>}
+          </Link>
         </li>
         <li className="flex items-center space-x-3 cursor-pointer hover:bg-green-600 p-2 rounded-md text-white">
-          <Icon icon="desktop" color="white" />{" "}
-          {!collapsed && <span>Devices</span>}
+          <Link className="flex items-center space-x-2 no-underline text-white w-full">
+            <Icon icon="desktop" color="white" />{" "}
+            {!collapsed && <span>Devices</span>}
+          </Link>
         </li>
         <li className="flex items-center space-x-3 cursor-pointer hover:bg-green-600 p-2 rounded-md text-white">
           <Icon icon="applications" color="white" />{" "}
